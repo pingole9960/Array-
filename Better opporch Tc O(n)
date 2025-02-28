@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+void findMissingRepeating(int arr[], int n, int &missing, int &repeating) {
+    int hash[n + 1] = {0};  // Hash array to store counts
+
+    // Count occurrences of each number
+    for (int i = 0; i < n; i++) {
+        hash[arr[i]]++;
+    }
+
+    // Find missing and repeating numbers
+    for (int i = 1; i <= n; i++) {
+        if (hash[i] == 0)
+            missing = i;
+        else if (hash[i] == 2)
+            repeating = i;
+
+        if (missing != -1 && repeating != -1)  // Stop when both are found
+            break;
+    }
+}
+
+int main() {
+    int arr[] = {4, 3, 6, 2, 1, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    int missing = -1, repeating = -1;
+    findMissingRepeating(arr, n, missing, repeating);
+
+    cout << "Repeating: " << repeating << ", Missing: " << missing << endl;
+    return 0;
+}
