@@ -1,0 +1,29 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+void altposneg(vector<int>&arr,int n)
+{
+	vector<int>pos,neg;
+	//push element into temp vector
+	for(int i=0;i<n;i++){
+		if(arr[i]<0)
+			neg.push_back(arr[i]);
+		else
+			pos.push_back(arr[i]);
+	}
+	//with help of Index we can put ele
+	for(int i=0;i<n/2;i++){
+			arr[2*i]=pos[i];
+			arr[2*i+1]=neg[i];
+	}
+	for(auto ele:arr){
+		cout<<ele<<" ";
+	}
+	
+}
+
+int main()
+{
+	vector<int>arr={9,4,-2,-1,5,0,-5,-3,2};
+	altposneg(arr,9);
+}
